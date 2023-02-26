@@ -10,6 +10,7 @@
 ********************************************************************************/
 import { Card } from 'react-bootstrap';
 import useSWR from 'swr';
+import Error from 'next/error';
 
 export default function ArtworkCardDetail(props){
   const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${props.objectID}`);
