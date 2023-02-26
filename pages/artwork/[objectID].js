@@ -8,16 +8,19 @@
 *
 *
 ********************************************************************************/
-import { Html, Head, Main, NextScript } from 'next/document'
+import { useRouter } from 'next/router';
+import { Row, Col } from 'react-bootstrap';
+import ArtworkCardDetail from '../../components/ArtworkCardDetail';
 
-export default function Document() {
+export default function ArtworkById() {
+  const router = useRouter();
+  const { objectID } = router.query;
+
   return (
-    <Html lang="en">
-      <Head />
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  )
+    <Row>
+      <Col>
+        <ArtworkCardDetail objectID={objectID} />
+      </Col>
+    </Row>
+  );
 }

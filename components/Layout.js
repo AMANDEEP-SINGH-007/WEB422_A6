@@ -8,16 +8,16 @@
 *
 *
 ********************************************************************************/
-import { Html, Head, Main, NextScript } from 'next/document'
+import MainNav from './MainNav';
+import { Container } from 'react-bootstrap';
 
-export default function Document() {
-  return (
-    <Html lang="en">
-      <Head />
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  )
+export default function Layout(props){
+    return (
+        <>
+          <MainNav />
+          <br />
+          <Container>{props.children}</Container>
+          <br />
+        </>
+      );
 }
