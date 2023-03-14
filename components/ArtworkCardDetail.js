@@ -1,19 +1,34 @@
 /*********************************************************************************
-*  WEB422 – Assignment 4
+*  WEB422 – Assignment 5
 *  I declare that this assignment is my own work in accordance with Seneca Academic Policy.  
 *  No part of this assignment has been copied manually or electronically from any other source
 *  (including web sites) or distributed to other students.
 * 
-*  Name: - Amandeep Singh Student ID: 145041208 Date: Feb 26, 2023
+*  Name: - Amandeep Singh Student ID: 145041208 Date: Mar 14, 2023
 *
 *
 ********************************************************************************/
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import useSWR from 'swr';
 import Error from 'next/error';
+import { useState } from 'react';
+import { useAtom } from 'jotai';
+import { favouritesAtom } from '../store.js';
 
 export default function ArtworkCardDetail(props){
-  const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${props.objectID}`);
+  const [favouritesList, setFavouritesList] = useAtom(favouritesAtom);
+  const [showAdded, setShowAdded] = useState(favouritesList?.includes(props.objectID)?true: false);
+  function favouritesClicked(){
+    if(showAdded){
+        setFavouritesList(current => current.filter(fav => fav != props.objectID));
+        setShowAdded(false);
+    }
+    else{
+        setFavouritesList(current => [...current, props.objectID]);
+        setShowAdded(true);
+    }
+}
+  const { data, error } = useSWR(props.objectID?`https://collectionapi.metmuseum.org/public/collection/v1/objects/${props.objectID}`:null);
 
   if (error) {
     return <Error statusCode={404} />;
@@ -37,7 +52,8 @@ export default function ArtworkCardDetail(props){
           &nbsp;(&nbsp;
           {data.artistDisplayName && (<a href={data.artistWikidata_URL} target="_blank" rel="noreferrer" >wiki</a>)}&nbsp;)<br />
           <strong>Credit Line:</strong> {data.creditLine || 'N/A'}<br />
-          <strong>Dimensions:</strong> {data.dimensions || 'N/A'}<br />
+          <strong>Dimensions:</strong> {data.dimensions || 'N/A'}<br /><br />
+          <Button variant={showAdded?"primary":"outline-primary"} onClick={(e)=>favouritesClicked()}>{showAdded?"+ Favourite ( added )":"+ Favourite"}</Button>
         </Card.Text>
       </Card.Body>
     </Card></>

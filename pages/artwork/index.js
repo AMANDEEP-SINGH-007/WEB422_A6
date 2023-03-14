@@ -1,10 +1,10 @@
 /*********************************************************************************
-*  WEB422 – Assignment 4
+*  WEB422 – Assignment 5
 *  I declare that this assignment is my own work in accordance with Seneca Academic Policy.  
 *  No part of this assignment has been copied manually or electronically from any other source
 *  (including web sites) or distributed to other students.
 * 
-*  Name: - Amandeep Singh Student ID: 145041208 Date: Feb 26, 2023
+*  Name: - Amandeep Singh Student ID: 145041208 Date: Mar 14, 2023
 *
 *
 ********************************************************************************/
@@ -14,6 +14,7 @@ import useSWR from 'swr';
 import { Col, Pagination, Row, Card } from 'react-bootstrap';
 import ArtworkCard from '../../components/ArtworkCard';
 import Error from 'next/error';
+import validObjectIDList from '../../public/data/validObjectIDList.json';
 
 const PER_PAGE = 12;
 
@@ -40,9 +41,10 @@ export default function Artwork() {
 
   useEffect(() => {
     if (data) {
+      let filteredResults = validObjectIDList.objectIDs.filter(x => data.objectIDs?.includes(x));
       const results = [];
-      for (let i = 0; i < data?.objectIDs?.length; i += PER_PAGE) {
-        const chunk = data?.objectIDs.slice(i, i + PER_PAGE);
+      for (let i = 0; i < filteredResults.length; i += PER_PAGE) {
+        const chunk = filteredResults.slice(i, i + PER_PAGE);
         results.push(chunk);
       }
       setArtworkList(results);
