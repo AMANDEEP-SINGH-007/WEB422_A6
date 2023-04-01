@@ -6,7 +6,7 @@
 * 
 *  Name: - Amandeep Singh Student ID: 145041208 Date: April 1, 2023
 *
-*  Vercel App (Deployed) Link: https://web-422-a6-cuhgjilwn-amandeep-singh-007.vercel.app
+*  Vercel App (Deployed) Link: https://web-422-a6-beryl.vercel.app
 *
 ********************************************************************************/ 
 import { useState } from 'react';
