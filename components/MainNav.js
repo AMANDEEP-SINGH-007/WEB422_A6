@@ -58,9 +58,9 @@ export default function MainNav() {
             &nbsp;
             {token ? (
               <Nav>
-                <NavDropdown title={token.userName} id="basic-nav-dropdown" active={ router.pathname === "/favourites" || router.pathname === "/History" }>
+                <NavDropdown title={token.userName} id="basic-nav-dropdown" active={ router.pathname === "/favourites" || router.pathname === "/history" }>
                   <Link href="/favourites" passHref legacyBehavior><NavDropdown.Item onClick={(e) => {setIsExpanded(false);}} active={router.pathname === "/favourites"}>Favourites</NavDropdown.Item></Link>
-                  <Link href="/History" passHref legacyBehavior><NavDropdown.Item onClick={(e) => {setIsExpanded(false);}} active={router.pathname === "/History"}>Search History</NavDropdown.Item></Link>
+                  <Link href="/history" passHref legacyBehavior><NavDropdown.Item onClick={(e) => {setIsExpanded(false);}} active={router.pathname === "/history"}>Search History</NavDropdown.Item></Link>
                   <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
