@@ -1,13 +1,14 @@
 /*********************************************************************************
-*  WEB422 – Assignment 5
-*  I declare that this assignment is my own work in accordance with Seneca Academic Policy.  
-*  No part of this assignment has been copied manually or electronically from any other source
-*  (including web sites) or distributed to other students.
+*  WEB422 – Assignment 06
+*  I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  No part of this
+*  assignment has been copied manually or electronically from any other source (including web sites) or 
+*  distributed to other students.
 * 
-*  Name: - Amandeep Singh Student ID: 145041208 Date: Mar 14, 2023
+*  Name: - Amandeep Singh Student ID: 145041208 Date: April 1, 2023
 *
+*  Vercel App (Deployed) Link: https://web-422-a6-cuhgjilwn-amandeep-singh-007.vercel.app
 *
-********************************************************************************/
+********************************************************************************/ 
 import '@/styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { SWRConfig } from 'swr'
